@@ -4,12 +4,12 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		//Enemigo[] enemigos = {}
+		Player jugador = new Player("Juanjo", 20, 6);
+		Enemigo zombie = new Enemigo("Zombie", 12, 3);
 		
-		System.out.println("Ha aparecido un contrincante");
-		
-		Inventario inv = new Inventario();
-		inv.Prueba();
+		jugador.Display();
+		zombie.Display();
+
 	}
 
 }
