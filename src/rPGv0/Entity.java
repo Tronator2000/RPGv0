@@ -8,6 +8,7 @@ public class Entity {
 	private double health;
 	private double strength;
 	private double dex;
+	private Arma arma;
 	
 	public Entity(String name,double health, double strength, double dex) {
 		
@@ -85,6 +86,11 @@ public class Entity {
 	public double priority() {
 		Random random = new Random();
 		return random.nextDouble() * dex;
+	}
+	
+	public void equipArma(Arma arma) {
+		this.arma = arma;
+		strength += arma.getDamageBonus();
 	}
 	
 }
