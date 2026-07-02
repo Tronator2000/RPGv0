@@ -4,6 +4,7 @@ import java.util.Random;
 public class Entity {
 	
 	String name;
+	double maxhealth;
 	double health;
 	double strength;
 	double dex;
@@ -11,6 +12,7 @@ public class Entity {
 	public Entity(String name,double health, double strength, double dex) {
 		
 		this.name = name;
+		this.maxhealth = health;
 		this.health = health;
 		this.strength = strength;
 		this.dex = dex;
@@ -24,9 +26,9 @@ public class Entity {
 	public void display() {
 		System.out.printf("\nSTATS:\n"
 				+ "Nombre: %s\n"
-				+ "PV: %.2f\n"
+				+ "PV: %.2f/%.2f\n"
 				+ "PF: %.2f\n"
-				+ "PD: %.2f\n\n", name, health, strength, dex);
+				+ "PD: %.2f\n\n", name, health, maxhealth, strength, dex);
 	}
 	
 	public void attack(Entity objetivo) {
