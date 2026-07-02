@@ -4,10 +4,10 @@ import java.util.Random;
 public class Entity {
 	
 	String name;
-	double maxhealth;
-	double health;
-	double strength;
-	double dex;
+	private double maxhealth;
+	private double health;
+	private double strength;
+	private double dex;
 	
 	public Entity(String name,double health, double strength, double dex) {
 		
@@ -23,9 +23,27 @@ public class Entity {
 		return health > 0;
 	}
 		
+	//GETTERS------------------------
 	public String getName() {
 		return this.name;
 	}
+	
+	public String getHealthIndicator() {
+		return String.format("%s (%.2f/%.2f)", getName(),getHealth(),maxhealth);
+	}
+	
+	public double getHealth() {
+		return this.health;
+	}
+	
+	public double getStrength() {
+		return this.strength;
+	}
+	
+	public double getDex() {
+		return this.dex;
+	}
+	//-------------------------------
 	
 	public void display() {
 		System.out.printf("\nSTATS:\n"
@@ -35,22 +53,26 @@ public class Entity {
 				+ "PD: %.2f\n\n", name, health, maxhealth, strength, dex);
 	}
 	
+	public void takeDamage(double damage) {
+		if (damage > health) {
+			damage = health;
+		}
+		
+		health -= damage;
+	}
+	
 	public void attack(Entity objetivo) {
 		if (isAlive()) {
 			if (objetivo.isAlive()) {
 				Random random = new Random();
 				double damage = random.nextDouble() * strength;
 
-				if(damage > objetivo.health) {
-					damage = objetivo.health;
-				}
-
-				objetivo.health -= damage;
+				objetivo.takeDamage(damage);
 			
-				System.out.printf("%s ha quitado %.2f PV a %s\n", this.name, damage, objetivo.name);
+				System.out.printf("%s ha quitado %.2f PV a %s\n", this.name, damage, objetivo.getHealthIndicator());
 			}
 			else {
-				System.out.println(objetivo.name + " ya está muerto.");
+				System.out.println(name + " ataca a " + objetivo.name + ", pero este ya está muerto.");
 				return;
 			}
 		}
