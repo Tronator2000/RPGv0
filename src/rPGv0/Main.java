@@ -9,6 +9,7 @@ public class Main {
 		Enemigo zombie = new Enemigo("Zombie", 12, 3, 10);
 		
 		Combate combate = new Combate(jugador, zombie);
+		combate.start();
 		
 		jugador.display();
 		zombie.display();

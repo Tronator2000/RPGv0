@@ -14,6 +14,9 @@ public class Combate {
 		this.jugador = jugador;
 		this.enemigo = enemigo;
 		
+	}
+	
+	public void start() {
 		int turn = 1;
 		
 		while (jugador.isAlive() && enemigo.isAlive()) {
@@ -49,6 +52,5 @@ public class Combate {
 		}
 		
 		System.out.printf("%s HA GANADO EL COMBATE\n", ganador.getName());
-		
 	}
 }

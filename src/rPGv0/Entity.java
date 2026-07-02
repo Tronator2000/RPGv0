@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Entity {
 	
-	String name;
+	private String name;
 	private double maxhealth;
 	private double health;
 	private double strength;
@@ -69,10 +69,10 @@ public class Entity {
 
 				objetivo.takeDamage(damage);
 			
-				System.out.printf("%s ha quitado %.2f PV a %s\n", this.name, damage, objetivo.getHealthIndicator());
+				System.out.printf("%s ha quitado %.2f PV a %s\n", getName(), damage, objetivo.getHealthIndicator());
 			}
 			else {
-				System.out.println(name + " ataca a " + objetivo.name + ", pero este ya está muerto.");
+				System.out.println(getName() + " ataca a " + objetivo.getName() + ", pero este ya está muerto.");
 				return;
 			}
 		}
