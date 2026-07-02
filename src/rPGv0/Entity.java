@@ -21,7 +21,7 @@ public class Entity {
 		return health > 0;
 	}
 		
-	void display() {
+	public void display() {
 		System.out.printf("STATS:\n"
 				+ "Nombre: %s\n"
 				+ "PV: %.2f\n"

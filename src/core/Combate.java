@@ -6,6 +6,9 @@ public class Combate {
 	Entity jugador;
 	Entity enemigo;
 	
+	Entity ganador;
+	Entity perdedor;
+	
 	public Combate(Entity jugador, Entity enemigo){
 		
 		this.jugador = jugador;
@@ -14,13 +17,29 @@ public class Combate {
 		while (jugador.isAlive() && enemigo.isAlive()) {
 			if(jugador.priority() >= enemigo.priority()) {
 				jugador.attack(enemigo);
-				enemigo.attack(jugador);
+				if(enemigo.isAlive()) {
+					enemigo.attack(jugador);
+				}
 			}
 			else {
 				enemigo.attack(jugador);
-				jugador.attack(enemigo);
+				if (jugador.isAlive()) {
+					jugador.attack(enemigo);
+				}
 			}
 		}
+		
+		//Winner and loser declaration
+		if(jugador.isAlive()) {
+			ganador = jugador;
+			perdedor = enemigo;
+		}
+		else {
+			ganador = enemigo;
+			perdedor = jugador;
+		}
+		
+		System.out.printf("%s HA GANADO EL COMBATE\n", ganador);
 		
 	}
 }
