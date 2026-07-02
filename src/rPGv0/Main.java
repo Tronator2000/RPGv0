@@ -1,4 +1,5 @@
 package rPGv0;
+import core.*;
 
 public class Main {
 
@@ -7,15 +8,9 @@ public class Main {
 		Player jugador = new Player("Juanjo", 20, 6, 10);
 		Enemigo zombie = new Enemigo("Zombie", 12, 3, 10);
 		
-		jugador.display();
-		System.out.println();
-		zombie.display();
+		Combate combate = new Combate(jugador, zombie);
 		
-		jugador.attack(zombie);
-		zombie.attack(jugador);
-	
 		jugador.display();
-		System.out.println();
 		zombie.display();
 
 	}

@@ -54,4 +54,9 @@ public class Entity {
 		}
 	}
 	
+	public double priority() {
+		Random random = new Random();
+		return random.nextDouble() * dex;
+	}
+	
 }
