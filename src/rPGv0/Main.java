@@ -13,7 +13,7 @@ public class Main {
 		
 		jugador.attack(zombie);
 		zombie.attack(jugador);
-		
+	
 		jugador.display();
 		System.out.println();
 		zombie.display();

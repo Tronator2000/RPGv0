@@ -8,13 +8,17 @@ public class Entity {
 	double strength;
 	double dex;
 	
-	Entity(String name,double health, double strength, double dex) {
+	public Entity(String name,double health, double strength, double dex) {
 		
 		this.name = name;
 		this.health = health;
 		this.strength = strength;
 		this.dex = dex;
 		
+	}
+	
+	public boolean isAlive() {
+		return health > 0;
 	}
 		
 	void display() {
@@ -25,10 +29,29 @@ public class Entity {
 				+ "PD: %.2f\n", name, health, strength, dex);
 	}
 	
-	void attack(Entity objetivo) {
-		Random random = new Random();
-		double damage = random.nextDouble() * strength;
-		objetivo.health -= damage;
+	public void attack(Entity objetivo) {
+		if (isAlive()) {
+			if (objetivo.isAlive()) {
+				Random random = new Random();
+				double damage = random.nextDouble() * strength;
+
+				if(damage > objetivo.health) {
+					damage = objetivo.health;
+				}
+
+				objetivo.health -= damage;
+			
+				System.out.printf("%s ha quitado %.2f PV a %s\n", this.name, damage, objetivo.name);
+			}
+			else {
+				System.out.println(objetivo.name + " ya está muerto.");
+				return;
+			}
+		}
+		else {
+			System.out.println(this.name + " no puede atacar ya que ha muerto.");
+			return;
+		}
 	}
 	
 }
