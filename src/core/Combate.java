@@ -48,7 +48,7 @@ public class Combate {
 			perdedor = jugador;
 		}
 		
-		System.out.printf("%s HA GANADO EL COMBATE\n", ganador);
+		System.out.printf("%s HA GANADO EL COMBATE\n", ganador.getName());
 		
 	}
 }

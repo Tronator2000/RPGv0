@@ -23,6 +23,10 @@ public class Entity {
 		return health > 0;
 	}
 		
+	public String getName() {
+		return this.name;
+	}
+	
 	public void display() {
 		System.out.printf("\nSTATS:\n"
 				+ "Nombre: %s\n"
