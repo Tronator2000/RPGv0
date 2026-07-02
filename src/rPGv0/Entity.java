@@ -22,11 +22,11 @@ public class Entity {
 	}
 		
 	public void display() {
-		System.out.printf("STATS:\n"
+		System.out.printf("\nSTATS:\n"
 				+ "Nombre: %s\n"
 				+ "PV: %.2f\n"
 				+ "PF: %.2f\n"
-				+ "PD: %.2f\n", name, health, strength, dex);
+				+ "PD: %.2f\n\n", name, health, strength, dex);
 	}
 	
 	public void attack(Entity objetivo) {

@@ -14,7 +14,12 @@ public class Combate {
 		this.jugador = jugador;
 		this.enemigo = enemigo;
 		
+		int turn = 1;
+		
 		while (jugador.isAlive() && enemigo.isAlive()) {
+			System.out.println("TURNO "+turn);
+			System.out.println("-------------------------");
+			
 			if(jugador.priority() >= enemigo.priority()) {
 				jugador.attack(enemigo);
 				if(enemigo.isAlive()) {
@@ -27,6 +32,10 @@ public class Combate {
 					jugador.attack(enemigo);
 				}
 			}
+			
+			System.out.println("-------------------------\n");
+			turn += 1;
+			
 		}
 		
 		//Winner and loser declaration
