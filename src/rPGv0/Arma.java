@@ -11,7 +11,7 @@ public class Arma {
 	}
 	
 	public String getName() {
-		return this.name;
+			return this.name;
 	}
 	
 	public double getDamageBonus() {

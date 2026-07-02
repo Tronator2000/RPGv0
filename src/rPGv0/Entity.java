@@ -8,7 +8,10 @@ public class Entity {
 	private double health;
 	private double strength;
 	private double dex;
-	private Arma arma;
+	private double defense;
+	
+	private final Arma desarmado = new Arma("Desarmado", 0);
+	private Arma arma = desarmado; 
 	
 	public Entity(String name,double health, double strength, double dex) {
 		
@@ -44,29 +47,44 @@ public class Entity {
 	public double getDex() {
 		return this.dex;
 	}
+	
+	private double getDefense() {
+		return strength*0.01 + defense;
+	}
+	
+	private double getAttackPower() {
+		return arma.getDamageBonus() + strength;
+	}
 	//-------------------------------
 	
 	public void display() {
-		System.out.printf("\nSTATS:\n"
+		System.out.printf("\n-------------------\n"
+				+ "STATS:\n"
 				+ "Nombre: %s\n"
 				+ "PV: %.2f/%.2f\n"
 				+ "PF: %.2f\n"
-				+ "PD: %.2f\n\n", name, health, maxhealth, strength, dex);
+				+ "PD: %.2f\n\n"
+				+ "Arma: %s (%.2f PA)\n"
+				+ "PA: %.2f\n"
+				+ "-------------------\n\n", name, health, maxhealth, strength, dex, arma.getName(), arma.getDamageBonus(), getAttackPower());
 	}
 	
-	public void takeDamage(double damage) {
+	public double takeDamage(double damage) {
+		Random random = new Random();
+		damage -= damage * getDefense() * random.nextDouble();
 		if (damage > health) {
 			damage = health;
 		}
 		
 		health -= damage;
+		return damage;
 	}
 	
 	public void attack(Entity objetivo) {
 		if (isAlive()) {
 			if (objetivo.isAlive()) {
 				Random random = new Random();
-				double damage = random.nextDouble() * strength;
+				double damage = random.nextDouble() * getAttackPower();
 
 				objetivo.takeDamage(damage);
 			
@@ -78,7 +96,7 @@ public class Entity {
 			}
 		}
 		else {
-			System.out.println(this.name + " no puede atacar ya que ha muerto.");
+			System.out.println(getName() + " no puede atacar ya que ha muerto.");
 			return;
 		}
 	}
@@ -90,7 +108,6 @@ public class Entity {
 	
 	public void equipArma(Arma arma) {
 		this.arma = arma;
-		strength += arma.getDamageBonus();
 	}
 	
 }
