@@ -14,6 +14,7 @@ public class ItemRep {
 		items.add(new Armadura("Armadura de Cuero", 0.05));
 		items.add(new Armadura("Cota de Malla", 0.15));
 		items.add(new Armadura("Armadura de Hierro", 0.20, 3));
+		items.add(new Arma("Lanzagrandas", 600));
 	}
 	
 	public Item getItem(int i) {
