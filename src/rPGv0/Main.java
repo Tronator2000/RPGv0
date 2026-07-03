@@ -21,12 +21,11 @@ public class Main {
 		
 		Enemigo baco = new Enemigo("Baco", 20, 3, 10);
 		
-		jugador.equipArma(bazooka);
 		baco.equipArma(guadaña);
 		baco.equipArmor(diamante);
 		
 		Combate combate2 = new Combate(jugador, baco);
-		combate2.start();
+		//combate2.start();
 		
 		jugador.display();
 		baco.display();
@@ -37,6 +36,8 @@ public class Main {
 		inv.addArmadura(diamante);
 		inv.display();
 		
+		jugador.equipArma(inv.getArma(0));
+		jugador.display();
 	}
 
 }

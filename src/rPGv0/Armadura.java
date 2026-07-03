@@ -19,7 +19,7 @@ public class Armadura {
 	}
 	
 	public String getDefenseBonusPer() {
-		return String.format("%.2f %%", getDefenseBonus());
+		return String.format("%.2f %%", getDefenseBonus()*100);
 	}
 	
 }
