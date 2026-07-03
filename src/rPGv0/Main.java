@@ -31,6 +31,12 @@ public class Main {
 		jugador.display();
 		baco.display();
 		
+		Inventario inv = jugador.getInv();
+		inv.addArma(guadaña);
+		inv.addArma(bazooka);
+		inv.addArmadura(diamante);
+		inv.display();
+		
 	}
 
 }
