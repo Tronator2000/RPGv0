@@ -54,7 +54,11 @@ public class Entity {
 	}
 	
 	private double getDefense() {
-		return strength*0.01 + armadura.getDefenseBonus();
+		double defense = strength*0.01 + armadura.getDefenseBonus();
+		if(defense > 1) {
+			return 1;
+		}
+		return defense;
 	}
 	
 	public String getDefensePer() {
