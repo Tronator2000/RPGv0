@@ -111,6 +111,13 @@ public class Entity {
 		}
 	}
 	
+	public double heal(double heal) {
+		if(health + heal > maxhealth) {
+			return health = maxhealth;
+		}
+		return health += heal;
+	}
+	
 	public double priority() {
 		Random random = new Random();
 		return random.nextDouble() * dex;
