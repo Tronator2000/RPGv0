@@ -1,17 +1,12 @@
 package rPGv0;
 
-public class Arma {
+public class Arma extends Item {
 	
-	private String name;
 	private double damageBonus;
 	
 	public Arma(String name, double damageBonus) {
-		this.name = name;
+		super(name);
 		this.damageBonus = damageBonus;
-	}
-	
-	public String getName() {
-			return this.name;
 	}
 	
 	public double getDamageBonus() {

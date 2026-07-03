@@ -127,7 +127,7 @@ public class Entity {
 	}
 	
 	public void equipArmor(Armadura armor) {
-		if(armadura != null) {
+		if(armor != null) {
 			this.armadura = armor;
 		}
 	}

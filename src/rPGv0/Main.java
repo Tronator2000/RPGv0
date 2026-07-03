@@ -11,34 +11,10 @@ public class Main {
 		Combate combate = new Combate(jugador, zombie);
 		combate.start();
 		
-		jugador.display();
-		zombie.display();
-		
-		Arma bazooka = new Arma("Bazooka", 500);
-		Arma guadaña = new Arma("Guadaña", 50);
-		
-		Armadura diamante = new Armadura("Armadura de Diamante", 0.50);
-		
-		Enemigo baco = new Enemigo("Baco", 20, 3, 10);
-		
-		baco.equipArma(guadaña);
-		baco.equipArmor(diamante);
-		
-		Combate combate2 = new Combate(jugador, baco);
-		//combate2.start();
-		
-		jugador.display();
-		baco.display();
-		
-		Inventario inv = jugador.getInv();
-		inv.addArma(guadaña);
-		inv.addArma(bazooka);
-		inv.addArmadura(diamante);
-		inv.display();
-		
-		jugador.equipArma(inv.getArma(0));
-		jugador.equipArmor(inv.getArmadura(0));
-		jugador.display();
 	}
 
+	private static void separator() {
+		System.out.println("========================");
+	}
+	
 }

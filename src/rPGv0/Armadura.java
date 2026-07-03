@@ -1,17 +1,12 @@
 package rPGv0;
 
-public class Armadura {
+public class Armadura extends Item {
 
-	private String name;
 	private double defenseBonus;
 	
 	public Armadura(String name, double defenseBonus) {
-		this.name = name;
+		super(name);
 		this.defenseBonus = defenseBonus;
-	}
-	
-	public String getName() {
-		return name;
 	}
 	
 	public double getDefenseBonus() {
