@@ -73,7 +73,7 @@ public class Entity {
 				+ "Arma: %s (%.2f PA)\n"
 				+ "PA: %.2f\n\n"
 				+ "Armadura: %s (%s)\n"
-				+ "DT: %s\n"
+				+ "Def. Max: %s\n"
 				+ "-------------------\n\n", name, health, maxhealth, strength, dex, arma.getName(), arma.getDamageBonus(), getAttackPower(), armadura.getName(),
 				armadura.getDefenseBonusPer(), getDefensePer());
 	}
