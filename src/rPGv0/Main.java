@@ -14,13 +14,16 @@ public class Main {
 		jugador.display();
 		zombie.display();
 		
-		Arma cuchillo = new Arma("Bazooka", 500);
+		Arma bazooka = new Arma("Bazooka", 500);
 		Arma guadaña = new Arma("Guadaña", 50);
+		
+		Armadura diamante = new Armadura("Armadura de Diamante", 0.50);
 		
 		Enemigo baco = new Enemigo("Baco", 20, 3, 10);
 		
-		jugador.equipArma(cuchillo);
+		jugador.equipArma(bazooka);
 		baco.equipArma(guadaña);
+		baco.equipArmor(diamante);
 		
 		Combate combate2 = new Combate(jugador, baco);
 		combate2.start();

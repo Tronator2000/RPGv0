@@ -8,10 +8,12 @@ public class Entity {
 	private double health;
 	private double strength;
 	private double dex;
-	private double defense;
 	
 	private final Arma desarmado = new Arma("Desarmado", 0);
-	private Arma arma = desarmado; 
+	private Arma arma = desarmado;
+	
+	private final Armadura descubierto = new Armadura("Descubierto", 0);
+	private Armadura armadura = descubierto;
 	
 	public Entity(String name,double health, double strength, double dex) {
 		
@@ -49,7 +51,11 @@ public class Entity {
 	}
 	
 	private double getDefense() {
-		return strength*0.01 + defense;
+		return strength*0.01 + armadura.getDefenseBonus();
+	}
+	
+	public double getDefensePer() {
+		return getDefense() * 100;
 	}
 	
 	private double getAttackPower() {
@@ -65,15 +71,19 @@ public class Entity {
 				+ "PF: %.2f\n"
 				+ "PD: %.2f\n\n"
 				+ "Arma: %s (%.2f PA)\n"
-				+ "PA: %.2f\n"
-				+ "-------------------\n\n", name, health, maxhealth, strength, dex, arma.getName(), arma.getDamageBonus(), getAttackPower());
+				+ "PA: %.2f\n\n"
+				+ "Armadura: %s (%.2f %%)\n"
+				+ "DT: %.2f %%\n"
+				+ "-------------------\n\n", name, health, maxhealth, strength, dex, arma.getName(), arma.getDamageBonus(), getAttackPower(), armadura.getName(),
+				armadura.getDefenseBonus(), getDefensePer());
 	}
 	
 	public double takeDamage(double damage) {
 		Random random = new Random();
 		damage -= damage * getDefense() * random.nextDouble();
 		if (damage > health) {
-			damage = health;
+			health = 0;
+			return damage;
 		}
 		
 		health -= damage;
@@ -84,11 +94,11 @@ public class Entity {
 		if (isAlive()) {
 			if (objetivo.isAlive()) {
 				Random random = new Random();
-				double damage = random.nextDouble() * getAttackPower();
+				double attack = random.nextDouble() * getAttackPower();
 
-				objetivo.takeDamage(damage);
+				double damage = objetivo.takeDamage(attack);
 			
-				System.out.printf("%s ha quitado %.2f PV a %s\n", getName(), damage, objetivo.getHealthIndicator());
+				System.out.printf("%s ataca con %.2f PA y ha quitado %.2f PV a %s\n", getName(), attack, damage, objetivo.getHealthIndicator());
 			}
 			else {
 				System.out.println(getName() + " ataca a " + objetivo.getName() + ", pero este ya está muerto.");
@@ -110,4 +120,15 @@ public class Entity {
 		this.arma = arma;
 	}
 	
+	public void unequipArma() {
+		this.arma = desarmado;
+	}
+	
+	public void equipArmor(Armadura armor) {
+		this.armadura = armor;
+	}
+	
+	public void unequipArmor() {
+		this.armadura = descubierto; 
+	}
 }

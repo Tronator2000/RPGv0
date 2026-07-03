@@ -2,8 +2,8 @@ package rPGv0;
 
 public class Armadura {
 
-	String name;
-	double defenseBonus;
+	private String name;
+	private double defenseBonus;
 	
 	public Armadura(String name, double defenseBonus) {
 		this.name = name;
