@@ -54,8 +54,8 @@ public class Entity {
 		return strength*0.01 + armadura.getDefenseBonus();
 	}
 	
-	public double getDefensePer() {
-		return getDefense() * 100;
+	public String getDefensePer() {
+		return String.format("%.2f %%",getDefense()*100);
 	}
 	
 	private double getAttackPower() {
@@ -72,10 +72,10 @@ public class Entity {
 				+ "PD: %.2f\n\n"
 				+ "Arma: %s (%.2f PA)\n"
 				+ "PA: %.2f\n\n"
-				+ "Armadura: %s (%.2f %%)\n"
-				+ "DT: %.2f %%\n"
+				+ "Armadura: %s (%s)\n"
+				+ "DT: %s\n"
 				+ "-------------------\n\n", name, health, maxhealth, strength, dex, arma.getName(), arma.getDamageBonus(), getAttackPower(), armadura.getName(),
-				armadura.getDefenseBonus(), getDefensePer());
+				armadura.getDefenseBonusPer(), getDefensePer());
 	}
 	
 	public double takeDamage(double damage) {

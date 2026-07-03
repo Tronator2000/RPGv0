@@ -18,4 +18,8 @@ public class Armadura {
 		return defenseBonus;
 	}
 	
+	public String getDefenseBonusPer() {
+		return String.format("%.2f %%", getDefenseBonus());
+	}
+	
 }
