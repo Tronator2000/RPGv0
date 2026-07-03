@@ -47,7 +47,10 @@ public class Entity {
 	}
 	
 	public double getDex() {
-		return this.dex;
+		if (dex - armadura.getDexPenalty() < 0) {
+			return 0;
+		}
+		return dex - armadura.getDexPenalty();
 	}
 	
 	private double getDefense() {
@@ -120,7 +123,7 @@ public class Entity {
 	
 	public double priority() {
 		Random random = new Random();
-		return random.nextDouble() * dex;
+		return random.nextDouble() * getDex();
 	}
 	
 	public void equipArma(Arma arma) {
