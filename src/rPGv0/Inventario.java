@@ -28,7 +28,11 @@ public class Inventario {
 	}
 	
 	public Arma getArma(int i) {
-		return armas.remove(i);
+		return armas.get(i);
+	}
+	
+	public Armadura getArmadura(int i) {
+		return armaduras.get(i);
 	}
 		
 }

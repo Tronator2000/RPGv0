@@ -37,6 +37,7 @@ public class Main {
 		inv.display();
 		
 		jugador.equipArma(inv.getArma(0));
+		jugador.equipArmor(inv.getArmadura(0));
 		jugador.display();
 	}
 
