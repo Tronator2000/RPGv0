@@ -117,7 +117,9 @@ public class Entity {
 	}
 	
 	public void equipArma(Arma arma) {
-		this.arma = arma;
+		if(arma != null) {
+			this.arma = arma;
+		}
 	}
 	
 	public void unequipArma() {
@@ -125,7 +127,9 @@ public class Entity {
 	}
 	
 	public void equipArmor(Armadura armor) {
-		this.armadura = armor;
+		if(armadura != null) {
+			this.armadura = armor;
+		}
 	}
 	
 	public void unequipArmor() {

@@ -28,10 +28,18 @@ public class Inventario {
 	}
 	
 	public Arma getArma(int i) {
+		if(i<0 || i >= armas.size()) {
+			System.out.println("ERROR: No existe un índice para el arma específicada.");
+			return null;
+		}
 		return armas.get(i);
 	}
 	
 	public Armadura getArmadura(int i) {
+		if(i<0 || i >= armaduras.size()) {
+			System.out.println("ERROR: No existe un índice para la armadura específicada");
+			return null;
+		}
 		return armaduras.get(i);
 	}
 		
