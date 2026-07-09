@@ -11,5 +11,9 @@ public class Consumible extends Item {
 		super(name);
 		this.objetivo = objetivo;
 	}
+	
+	public void consume() {
+		
+	}
 
 }
