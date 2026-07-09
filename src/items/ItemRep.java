@@ -33,8 +33,8 @@ public class ItemRep {
 	
 	public Arma getArma(String id) {
 		Item item = getItem(id);
-		if (item instanceof Arma) {
-			 return (Arma) item;
+		if (item instanceof Arma arma) {
+			 return arma;
 		}
 		else {
 			System.out.println("ERROR: Se ha instanciado un Item con una clase no correspondida (Arma)");
@@ -44,8 +44,8 @@ public class ItemRep {
 	
 	public Armadura getArmadura(String id) {
 		Item item = getItem(id);
-		if (item instanceof Armadura) {
-			return (Armadura) item;
+		if (item instanceof Armadura armadura) {
+			return armadura;
 		}
 		else {
 			System.out.println("ERROR: Se ha instanciado un Item con una clase no correspondida (Armadura)");
