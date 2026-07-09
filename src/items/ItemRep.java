@@ -31,8 +31,14 @@ public class ItemRep {
 		objetos.add(new Arma("Lanzagrandas", 600));
 	}
 	
-	public Item getItem(int i) {
-		return objetos.get(i);
+	public Item getItem(String id) {
+		if (items.containsKey(id)) {
+			return items.get(id);
+		}
+		else {
+			System.out.println("ERROR: Se ha instanciado un Item con un id no válido");
+			return null;
+		}
 	}
 	
 }
