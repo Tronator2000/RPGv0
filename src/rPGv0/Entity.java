@@ -70,6 +70,8 @@ public class Entity {
 	}
 	//-------------------------------
 	
+	
+	
 	public void display() {
 		System.out.printf("\n-------------------\n"
 				+ "STATS:\n"
