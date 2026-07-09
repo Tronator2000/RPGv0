@@ -15,6 +15,8 @@ public class Combate {
 	Entity ganador;
 	Entity perdedor;
 	
+	private Scanner scanner = new Scanner(System.in);
+	
 	public Combate(Entity jugador, Entity enemigo){
 		
 		this.p1 = jugador;
@@ -22,39 +24,43 @@ public class Combate {
 		
 	}
 	
+	//Check if entity is player
 	private boolean checkPlayer(Entity player) {
 		return player instanceof Player;
 	}
 	
-	private void convertIfPlayer(Entity player) {
+	//Convert entity to type Player if entity is Player
+	private Player convertIfPlayer(Entity player) {
 		if (checkPlayer(player)) {
-			player = (Player) player;
+			return (Player) player;
 		}
+		return null;
 	}
 	
+	//MAIN COMBAT
 	public void start() {
 		int turn = 1;
 		
+		//DEBUG
 		System.out.println(p1.getName()+": "+checkPlayer(p1));
 		System.out.println(p2.getName()+": "+checkPlayer(p2));
-		
-		menu((Player)p1);
 		
 		while (p1.isAlive() && p2.isAlive()) {
 			System.out.println("TURNO "+turn);
 			System.out.println("-------------------------");
 			
+			//FIRST P1
 			if(p1.priority() >= p2.priority()) {
-				//p1.attack(p2);
-				//if(p1.isAlive()) {
-					//p2.attack(p1);
-				//}
-				menu(p1);
+				menuIfPlayer(p1,p2);
+				if(p1.isAlive()) {
+					menuIfPlayer(p2, p1);
+					}
 			}
+			//FIRST P2
 			else {
-				p2.attack(p1);
+				menuIfPlayer(p2, p1);
 				if (p1.isAlive()) {
-					p1.attack(p2);
+					menuIfPlayer(p1, p2);
 				}
 			}
 			
@@ -76,39 +82,39 @@ public class Combate {
 		System.out.printf("%s HA GANADO EL COMBATE\n", ganador.getName());
 	}
 	
+	
+	
 	//Menu created for players inside a combat
-	private void menu(Player jugador) {
+	private void menu(Player jugador, Entity objetivo) {
 		System.out.println("\n\t     ["+jugador.getName().toUpperCase()+"]"
 				+ "\n======================================="
 				+ "\n1) ATACAR\t2) USAR OBJETO"
 				+ "\n3) PASAR TURNO\t4) USAR HABILIDAD"
 				+ "\n=======================================\n");
 
-		Scanner scanner = new Scanner(System.in);
 		boolean error = true;
 		int eleccion = 0;
 		
 		while(error) {
 			try {
-				System.out.println("Introduzca una opción: ");
+				System.out.print("Introduzca una opción: ");
 				eleccion = scanner.nextInt();
+				System.out.println();
+				
 
 				error = false;
 			}
 			catch(Exception e) {
 				System.out.println("Se ha producido un error, por favor, vuelva a introducir el dato");
 			}
-			finally {
-				scanner.close();
-			}
 		}
 		
 		switch (eleccion) {
-		case 1: System.out.println("1");
+		case 1:	jugador.attack(objetivo);
 		break;
 		case 2: System.out.println("2");
 		break;
-		case 3: System.out.println("3");
+		case 3: System.out.println("¡"+p1.getName()+" decide no hacer nada!");
 		break;
 		case 4: System.out.println("4");
 		break;
@@ -117,7 +123,15 @@ public class Combate {
 		}
 	}
 	
-	private void atacar(Player player) {
-		
+	//If entity is Player, then print menu, else attack
+	private void menuIfPlayer(Entity entity, Entity enemy) {
+		if (checkPlayer(entity)) {
+			menu(convertIfPlayer(entity), enemy);
+		}
+		else {
+			entity.attack(enemy);
+		}
 	}
+	
+	
 }
