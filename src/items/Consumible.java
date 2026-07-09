@@ -5,11 +5,11 @@ import rPGv0.Item;
 
 public class Consumible extends Item {
 	
-	private Entity obejtivo;
+	private Entity objetivo;
 	
 	public Consumible(String name, Entity objetivo) {
 		super(name);
-		this.obejtivo = objetivo;
+		this.objetivo = objetivo;
 	}
 
 }
