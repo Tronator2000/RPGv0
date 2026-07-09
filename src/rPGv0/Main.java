@@ -11,6 +11,8 @@ public class Main {
 		Player jugador = new Player("Juanjo", 20, 6, 10);
 		Enemigo yai = new Enemigo("Yaiza", 20, 8, 5);
 		
+		jugador.equipArma(itemrep.getArma("espada"));
+		
 		jugador.display();
 		yai.display();
 		

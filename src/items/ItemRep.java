@@ -36,6 +36,9 @@ public class ItemRep {
 		if (item instanceof Arma arma) {
 			 return arma;
 		}
+		else if (item == null) {
+			return null;
+		}
 		else {
 			System.out.println("ERROR: Se ha instanciado un Item con una clase no correspondida (Arma)");
 			return null;
@@ -46,6 +49,9 @@ public class ItemRep {
 		Item item = getItem(id);
 		if (item instanceof Armadura armadura) {
 			return armadura;
+		}
+		else if (item == null) {
+			return null;
 		}
 		else {
 			System.out.println("ERROR: Se ha instanciado un Item con una clase no correspondida (Armadura)");
