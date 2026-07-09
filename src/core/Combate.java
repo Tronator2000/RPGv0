@@ -26,6 +26,12 @@ public class Combate {
 		return player instanceof Player;
 	}
 	
+	private void convertIfPlayer(Entity player) {
+		if (checkPlayer(player)) {
+			player = (Player) player;
+		}
+	}
+	
 	public void start() {
 		int turn = 1;
 		
@@ -39,10 +45,11 @@ public class Combate {
 			System.out.println("-------------------------");
 			
 			if(p1.priority() >= p2.priority()) {
-				p1.attack(p2);
-				if(p1.isAlive()) {
-					p2.attack(p1);
-				}
+				//p1.attack(p2);
+				//if(p1.isAlive()) {
+					//p2.attack(p1);
+				//}
+				menu(p1);
 			}
 			else {
 				p2.attack(p1);
@@ -69,6 +76,7 @@ public class Combate {
 		System.out.printf("%s HA GANADO EL COMBATE\n", ganador.getName());
 	}
 	
+	//Menu created for players inside a combat
 	private void menu(Player jugador) {
 		System.out.println("\n\t     ["+jugador.getName().toUpperCase()+"]"
 				+ "\n======================================="
@@ -107,5 +115,9 @@ public class Combate {
 		case 0:
 		default: System.out.println("ERROR");
 		}
+	}
+	
+	private void atacar(Player player) {
+		
 	}
 }
