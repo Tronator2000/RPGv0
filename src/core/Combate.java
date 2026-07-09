@@ -44,15 +44,16 @@ public class Combate {
 		//DEBUG
 		System.out.println(p1.getName()+": "+checkPlayer(p1));
 		System.out.println(p2.getName()+": "+checkPlayer(p2));
+		System.out.println();
 		
 		while (p1.isAlive() && p2.isAlive()) {
-			System.out.println("TURNO "+turn);
+			System.out.println("[[TURNO "+turn+"]]");
 			System.out.println("-------------------------");
 			
 			//FIRST P1
 			if(p1.priority() >= p2.priority()) {
 				menuIfPlayer(p1,p2);
-				if(p1.isAlive()) {
+				if(p2.isAlive()) {
 					menuIfPlayer(p2, p1);
 					}
 			}
@@ -86,7 +87,8 @@ public class Combate {
 	
 	//Menu created for players inside a combat
 	private void menu(Player jugador, Entity objetivo) {
-		System.out.println("\n\t     ["+jugador.getName().toUpperCase()+"]"
+		System.out.println("\n********************************************"
+				+ "\n\t     ["+jugador.getName().toUpperCase()+"]"
 				+ "\n======================================="
 				+ "\n1) ATACAR\t2) USAR OBJETO"
 				+ "\n3) PASAR TURNO\t4) USAR HABILIDAD"
@@ -99,7 +101,7 @@ public class Combate {
 			try {
 				System.out.print("Introduzca una opción: ");
 				eleccion = scanner.nextInt();
-				System.out.println();
+				System.out.println("********************************************\n");
 				
 
 				error = false;
@@ -114,7 +116,7 @@ public class Combate {
 		break;
 		case 2: System.out.println("2");
 		break;
-		case 3: System.out.println("¡"+p1.getName()+" decide no hacer nada!");
+		case 3: System.out.println("¡"+jugador.getName()+" decide no hacer nada!");
 		break;
 		case 4: System.out.println("4");
 		break;

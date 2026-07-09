@@ -9,15 +9,19 @@ public class Main {
 		ItemRep itemrep = new ItemRep();
 		
 		Player jugador = new Player("Juanjo", 20, 6, 10);
-		Enemigo yai = new Enemigo("Yaiza", 20, 8, 5);
+		Enemigo zombie = new Enemigo("Zombie", 20, 8, 5);
 		
 		jugador.equipArma(itemrep.getArma("espada"));
 		
 		jugador.display();
-		yai.display();
+		zombie.display();
 		
-		Combate combate = new Combate(jugador, yai);
+		Combate combate = new Combate(jugador, zombie);
 		combate.start();
+		
+		Player yai = new Player("Yaiza", 20, 6, 10);
+		Combate combate2 = new Combate(jugador, yai);
+		combate2.start();
 
 	}
 
