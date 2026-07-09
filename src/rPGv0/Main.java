@@ -9,18 +9,12 @@ public class Main {
 		ItemRep itemrep = new ItemRep();
 		
 		Player jugador = new Player("Juanjo", 20, 6, 10);
-		Enemigo eva = new Enemigo("Eva", 20, 8, 5);
-		
-		System.out.println(eva.getName() + " está volando");
-		
-		jugador.equipArma((Arma)itemrep.getItem(3));
-		eva.equipArma((Arma)itemrep.getItem(8));
-		eva.equipArmor((Armadura)itemrep.getItem(4));
+		Enemigo yai = new Enemigo("Yaiza", 20, 8, 5);
 		
 		jugador.display();
-		eva.display();
+		yai.display();
 		
-		Combate combate = new Combate(jugador, eva);
+		Combate combate = new Combate(jugador, yai);
 		combate.start();
 
 	}

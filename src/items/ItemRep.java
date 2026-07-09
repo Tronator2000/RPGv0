@@ -19,24 +19,36 @@ public class ItemRep {
 		items.put("lanzagranadas", new Arma("Lanzagranadas", 600));
 	}
 	
-	public void ItemReps() {
-		objetos.add(new Arma("Daga",4));
-		objetos.add(new Arma("Espada", 6));
-		objetos.add(new Arma("Guadaña", 50));
-		objetos.add(new Arma("Bazooka", 500));
-		objetos.add(new Armadura("Armadura de Diamante",0.5));
-		objetos.add(new Armadura("Armadura de Cuero", 0.05));
-		objetos.add(new Armadura("Cota de Malla", 0.15));
-		objetos.add(new Armadura("Armadura de Hierro", 0.20, 3));
-		objetos.add(new Arma("Lanzagrandas", 600));
-	}
 	
-	public Item getItem(String id) {
+	
+	private Item getItem(String id) {
 		if (items.containsKey(id)) {
 			return items.get(id);
 		}
 		else {
 			System.out.println("ERROR: Se ha instanciado un Item con un id no válido");
+			return null;
+		}
+	}
+	
+	public Arma getArma(String id) {
+		Item item = getItem(id);
+		if (item instanceof Arma) {
+			 return (Arma) item;
+		}
+		else {
+			System.out.println("ERROR: Se ha instanciado un Item con una clase no correspondida (Arma)");
+			return null;
+		}
+	}
+	
+	public Armadura getArmadura(String id) {
+		Item item = getItem(id);
+		if (item instanceof Armadura) {
+			return (Armadura) item;
+		}
+		else {
+			System.out.println("ERROR: Se ha instanciado un Item con una clase no correspondida (Armadura)");
 			return null;
 		}
 	}
