@@ -2,7 +2,7 @@ package rPGv0;
 
 public class Player extends Entity{
 	
-	private Inventario inv = new Inventario();
+	private Inventario inv = new Inventario(this);
 	
 	public Player(String name, double health, double strength, double dex) {
 		

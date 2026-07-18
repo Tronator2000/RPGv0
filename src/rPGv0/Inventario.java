@@ -1,10 +1,18 @@
 package rPGv0;
 import java.util.ArrayList;
+import items.Consumible;
 
 public class Inventario {
 
+	private Player owner;
+	
 	private ArrayList<Arma> armas = new ArrayList<>();
 	private ArrayList<Armadura> armaduras = new ArrayList<>();
+	private ArrayList<Consumible> consumibles = new ArrayList<>();
+	
+	public Inventario(Player owner) {
+		this.owner = owner;
+	}
 	
 	public void addArma(Arma arma) {
 		armas.add(arma);
@@ -12,6 +20,11 @@ public class Inventario {
 	
 	public void addArmadura(Armadura armadura) {
 		armaduras.add(armadura);
+	}
+	
+	public void addConsumible(Consumible consumible) {
+		consumibles.add(consumible);
+		consumible.setOwner(owner);
 	}
 	
 	public void display() {
@@ -24,6 +37,11 @@ public class Inventario {
 		for(int i = 0; i < armaduras.size(); i++) {
 			Armadura armadura = armaduras.get(i);
 			System.out.printf("* %d. %s\n     Def.Max: %s\n\n",i, armadura.getName(),armadura.getDefenseBonusPer());
+		}
+		System.out.println("CONSUMIBLES: ");
+		for(int i = 0; i < consumibles.size(); i++) {
+			Consumible consumible = consumibles.get(i);
+			System.out.printf("* %d. %s\n     Efecto: %s\n\n",i, consumible.getName(), consumible.getEffect());
 		}
 	}
 	
