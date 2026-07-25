@@ -1,34 +1,22 @@
 package items;
 
-import rPGv0.Player;
 import rPGv0.Entity;
 import rPGv0.Item;
 
 public class Consumible extends Item {
 	
-	private Player owner;
-	private String efecto;
+	private String descripcion;
 	
-	public Consumible(String name, String efecto) {
+	public Consumible(String name, String descripcion) {
 		super(name);
-		this.efecto = efecto;
+		this.descripcion = descripcion;
 	}
 	
 	public void consume(Entity objetivo) {
 		
-		owner.getInv();
-		
 	}
 	
-	public void setOwner(Player owner) {
-		this.owner = owner;
-	}
-	
-	public Player getOwner() {
-		return owner;
-	}
-	
-	public String getEffect() {
-		return efecto;
+	public String getDescription() {
+		return descripcion;
 	}
 }	

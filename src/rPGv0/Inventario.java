@@ -60,5 +60,13 @@ public class Inventario {
 		}
 		return armaduras.get(i);
 	}
+	
+	public Consumible getConsumible(int i) {
+		if(i<0 || i >= consumibles.size()) {
+			System.out.println("ERROR: No existe un índice para el consumible específicado");
+			return null;
+		}
+		return consumibles.get(i);
+	}
 		
 }
